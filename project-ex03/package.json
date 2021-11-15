@@ -1,12 +1,15 @@
 {
-  "name": "douzone-bipa-math",
+  "name": "project-ex03",
   "version": "1.0.0",
   "description": "",
-  "main": "douzone-bipa-math.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "douzone-jkl851-math": "^1.0.0"
+  }
 }

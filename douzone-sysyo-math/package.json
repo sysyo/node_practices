@@ -1,5 +1,5 @@
 {
-  "name": "project-ex02",
+  "name": "douzone-sysyo-math",
   "version": "1.0.0",
   "description": "",
   "main": "douzone-sysyo-math.js",
@@ -8,8 +8,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "douzone-sysyo-math": "file:../douzone-sysyo-math"
-  }
+  "license": "ISC"
 }
