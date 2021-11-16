@@ -1,5 +1,5 @@
 /*
-    douzone-bipa-math 파일 모듈 테스트
+    douzone-sysyo-math 파일 모듈 테스트
 */
 
 var dzMath = require('../douzone-sysyo-math/douzone-sysyo-math');

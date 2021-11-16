@@ -1,4 +1,4 @@
-const connect = require('connect');
+const connect = require('connect'); // npm에서 다운받음 (fs, connect, serve-staitc...)
 const serveStatic = require('serve-static');
 
 const port = 8080;

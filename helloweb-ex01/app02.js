@@ -10,7 +10,7 @@ const server = http.createServer(function(req, resp){
     }
 
     fs.readFile(`${__dirname}/public${req.url}`, function(error, data){ // __dirname 은 현재 실행 중인 폴더 경로
-        resp.writeHead(200, {
+        resp.writeHead(200, { // 따로 설정하지 않으면 응답의 HTTP 상태 코드는 항상 200
             'Content-Type': 'text/html'
         });
         resp.end(data);

@@ -7,6 +7,7 @@ module.exports = {
 
         return sum;
     },
+
     max: function() {
         var max = Number.MIN_SAFE_INTEGER;
         Array.from(arguments).forEach(function(e){
@@ -15,6 +16,7 @@ module.exports = {
 
         return max
     }, 
+    
     min: function() {
         var min = Number.MAX_SAFE_INTEGER;
         Array.from(arguments).forEach(function(e){

@@ -1,7 +1,7 @@
 /*
     douzone-sysyo-math 모듈 테스트 (모듈 패키지 :  로컬 배포)
 
-    $ npm i ../douzone-bipa-math
+    $ npm i ../douzone-sysyo-math
     명령으로 설치 후 테스트 할 것
 
 */
