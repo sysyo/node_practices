@@ -75,5 +75,6 @@ package.json 스크립트
 [helloweb-ex02] $ mkdir controllers
 [helloweb-ex02] $ mkdir models
 [helloweb-ex02] $ mkdir views
+[helloweb-ex02] $ mkdir 선영바부~~~~~~~~~
 
 
