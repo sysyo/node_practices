@@ -63,5 +63,3 @@
             |--- admin
                     |--- includes        
 </pre>
-
-
