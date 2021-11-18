@@ -10,8 +10,8 @@
 [mysite] $ npm i sequelize
 [mysite] $ npm i dotenv  o
 [mysite] $ npm i multer
-[mysite] $ npm i winston
-[mysite] $ npm i winston-daily-rotate-file
+[mysite] $ npm i winston o
+[mysite] $ npm i winston-daily-rotate-file o
 [mysite] $ npm i moment
 
 [mysite] $ npm i -D nodemon o
