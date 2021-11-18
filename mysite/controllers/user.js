@@ -21,6 +21,57 @@ module.exports = {
         } catch(e) {
             next(e);
         }
+    },
+    login: function(req, res) {
+        res.render('user/login');
+    },
+    _login: async function(req, res, next) {
+        try {
+            const user = await models.User.findOne({
+                attributes: ['no', 'name', 'role'],
+                where: {
+                    email: req.body.email, 
+                    password: req.body.password
+                }
+            });
+
+            if(user == null) {
+                res.render('user/login', Object.assign(req.body, {result: 'fail'}));
+                return;
+            }
+
+            // 세션 처리
+            req.session.authUser = user;
+
+            res.redirect('/');
+
+        } catch(e) {
+            next(e);
+        }
+    },
+    logout: async function(req, res, next) {
+        try {
+            await req.session.destroy();
+            res.redirect('/');
+        } catch(e) {
+            next(e)
+        }
+    },
+    update: async function(req, res, next) {
+        try {
+            const user = await models.User.findOne({
+                attributes: ['no', 'email', 'name', 'gender'],
+                where: {
+                    no: req.session.authUser.no
+                }
+            });
+            res.render('user/update', {user})
+        } catch(e) {
+            next(e)
+        }
+    },
+    _update: async function(req, res, next) {
+
     }
 
 }
