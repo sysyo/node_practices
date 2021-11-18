@@ -11,9 +11,11 @@ const dotenv = require('dotenv');
 
 // 1. Environment Variables (환경변수 셋팅) - app.env 적어주기
 dotenv.config({path: path.join(__dirname, 'config/app.env') });
+dotenv.config({path: path.join(__dirname, 'config/db.env') });
 
 // 2. Application Routers
 const { applicationRouter } = require('./routes');
+const { SIGTERM } = require('constants');
 
 // 3. Logger
 const logger = require('./logging');
@@ -44,23 +46,23 @@ const application = express()
     // .use('/user', userRouter); -> routes/index.js
     applicationRouter.setup(application);
 
-    // 6. Server Setup
-    http.createServer(application)
-        .on('listening', function(){
-            logger.info(`http server runs on ${process.env.PORT}`); // console.info 에서 변경
-        })
-        .on('error', function(error){
-            switch(error.code) {
-                case 'EACCESS':
-                    logger.error(`${process.env.PORT} requires privileges`); // console.error에서 변경
-                    process.exit(1);
-                    break;
-                case 'EADDRINUSE':
-                    logger.error(`${process.env.PORT} is already in use`); // console.error에서 변경
-                    process.exit(1);
-                    break;
-                default:
-                    throw error;        
-            }
-        })
-        .listen(process.env.PORT);
+// 6. Server Setup
+http.createServer(application)
+    .on('listening', function(){
+        logger.info(`http server runs on ${process.env.PORT}`);
+    })
+    .on('error', function(error){
+        switch(error.code) {
+            case 'EACCESS':
+                logger.error(`${process.env.PORT} requires privileges`);
+                process.exit(1);
+                break;
+            case 'EADDRINUSE':
+                logger.error(`${process.env.PORT} is already in use`);
+                process.exit(1);
+                break;
+            default:
+                throw error;        
+        }
+    })
+    .listen(process.env.PORT);
