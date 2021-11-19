@@ -28,23 +28,22 @@ module.exports = {
     _login: async function(req, res, next) {
         try {
             const user = await models.User.findOne({
-                attributes: ['no', 'name', 'role'],
-                where: {
-                    email: req.body.email, 
-                    password: req.body.password
-                }
+              attributes: ['no', 'name', 'role'],
+              where: {
+                  email: req.body.email,
+                  password: req.body.password
+              }  
             });
-
+            
             if(user == null) {
                 res.render('user/login', Object.assign(req.body, {result: 'fail'}));
                 return;
             }
 
-            // 세션 처리
+            // 서션처리
             req.session.authUser = user;
 
             res.redirect('/');
-
         } catch(e) {
             next(e);
         }
@@ -54,7 +53,7 @@ module.exports = {
             await req.session.destroy();
             res.redirect('/');
         } catch(e) {
-            next(e)
+            next(e);
         }
     },
     update: async function(req, res, next) {
@@ -67,11 +66,10 @@ module.exports = {
             });
             res.render('user/update', {user})
         } catch(e) {
-            next(e)
-        }
+            next(e);
+        }        
     },
     _update: async function(req, res, next) {
 
     }
-
 }

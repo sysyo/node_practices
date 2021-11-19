@@ -1,3 +1,4 @@
+
 const winston = require('winston');
 const winstonDaily = require('winston-daily-rotate-file');
 const path = require('path');
@@ -7,10 +8,7 @@ const path = require('path');
 
 const { combine, timestamp, printf } = winston.format;
 
-const logDirectory = path.join(path.dirname(require.main.filename), process.env.LOG_LOCATION); // require.main.filename : 현재 파일 이름
-// const lofFormat = printf(function(log) {
-//     return  `${log.timestamp} ${log.level}: ${log.message}`;
-// }) --- 아래와 같은 코드임
+const logDirectory = path.join(path.dirname(require.main.filename), process.env.LOG_LOCATION);
 const logFormat = printf(log => `${log.timestamp} ${log.level}: ${log.message}`);
 
 const logger = winston.createLogger({

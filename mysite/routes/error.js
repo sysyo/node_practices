@@ -6,15 +6,14 @@ module.exports = {
             res.status(404).render('error/404');
             return;
         }
-            
+
         res.status(404).send({
             result: 'fail',
             data: null,
             message: 'unknown request'
         });
     },
-    
-    error500: function(error, req, res, next) {
+    error500: function(err, req, res, next) {
         logger.error(err.stack);
 
         if(req.accepts('html')) {
@@ -26,7 +25,6 @@ module.exports = {
             result: 'fail',
             data: null,
             message: err.stack
-        });
-        
+        });        
     }
 }
