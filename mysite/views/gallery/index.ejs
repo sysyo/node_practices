@@ -49,16 +49,18 @@
 					<a href="" id="upload-image">이미지 올리기</a>
 				</div>
 				<ul>
+					<% results.forEach(function(vo){ %>
 						<li>
-							<a	href=""
+							<a	href="<%=vo.url %>"
 								data-lightbox="gallery"
 								class="image"
-								style="background-image:url('')">&nbsp;</a>
+								style="background-image:url('<%=vo.url %>')">&nbsp;</a>
 								<a	style="background: url('/assets/images/delete-image.png') no-repeat 0 0 / 18px"
-									href="/gallery/delete/"
+									href="/gallery/delete/<%=vo.no %>"
 									class="del-button"
 									title="삭제">삭제</a>
-						</li>						
+						</li>
+					<% }) %>							
 				</ul>	
 			</div>
 				<div id="dialog-upload-form" title="이미지 업로드" style="display:none">
@@ -67,7 +69,7 @@
 	  					  method="post"
 	  					  enctype="multipart/form-data">
 						<label>코멘트</label>
-						<input type="text" id="input-comments" name="comments" value="">
+						<input type="text" id="input-comments" name="comment" value="">
 						<label>이미지</label>
 						<input type="file" id="input-file" name="file">
 						<input type="submit" tabindex="-1" style="position:absolute; top:-1000px">

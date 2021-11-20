@@ -3,13 +3,14 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const dotenv = require('dotenv');
+const multer = require('multer');
 
 // const mainRouter = require('./routes/main'); -> index.js 로 옮기기
 // const userRouter = require('./routes/user');
 
 // const port = 8080; - 없애도 됨 (app.env에 환경 변수 셋팅)
 
-// 1. Environment Variables  (환경변수 셋팅) - app.env 적어주기
+// 1. Environment Variables (환경변수 셋팅) - app.env 적어주기
 dotenv.config({path: path.join(__dirname, 'config/app.env') });
 dotenv.config({path: path.join(__dirname, 'config/db.env') });
 
@@ -31,7 +32,9 @@ const application = express()
     .use(express.urlencoded({extended: true}))  // application/x-www-form-urlencoded
     .use(express.json())                        // application/json
     // 4-3. Multipart
-
+    .use(multer({
+        dest: path.join(__dirname, process.env.MULTER_TEMPORARY_STORE)
+    }).single('file'))
     // 4-4. static resources
     .use(express.static(path.join(__dirname, process.env.STATIC_RESOURCES_DIRECTORY)))
     // 4-5. view engine setup

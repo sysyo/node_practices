@@ -1,7 +1,7 @@
 const models = require('../models');
 const { Op } = require('sequelize');
 
-module.exports = {
+module.exports = { // model 사용 -> async 필요
     create: async function(req, res, next) {
         try {
             const result = await models.Guestbook.create(req.body);
@@ -14,12 +14,12 @@ module.exports = {
             next(e);
         }
     },
-    read: async function(req, res, next) { // model 사용 -> async 필요
+    read: async function(req, res, next) {
         try {
             const startNo = req.query.sno || 0;
-            const results = await models.Guestbook.findAll({ // index-spa.ejs의  url: '/api/guestbook?sno=' + startNo
+            const results = await models.Guestbook.findAll({
                 attributes: ['no', 'name', 'message'],
-                where: (startNo > 0) ? {no: {[Op.lt]: startNo}} : {},
+                where: (startNo > 0) ? {no: {[Op.lt]: startNo}} : {}, // index-spa.ejs의  url: '/api/guestbook?sno=' + startNo
                 order: [
                     ['no', 'desc']
                 ],
